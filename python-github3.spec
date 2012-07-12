@@ -10,6 +10,7 @@ Source0:	https://github.com/ChristopherMacGown/python-github3/tarball/master/%{n
 URL:		https://github.com/ChristopherMacGown/python-github3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
+Requires:	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
