@@ -1,13 +1,13 @@
 %define 	module	github3
 Summary:	Github API v3 library for Python
 Name:		python-%{module}
-Version:	0.0.11
+Version:	0.4
 Release:	1
-License:	New BSD License
+License:	ISC
 Group:		Development/Languages/Python
-Source0:	https://github.com/ChristopherMacGown/python-github3/tarball/master/%{name}.tgz
-# Source0-md5:	a0e539279d0169ecd163c8adf0bcb144
-URL:		https://github.com/ChristopherMacGown/python-github3
+Source0:	https://github.com/copitux/python-github3/tarball/%{version}/%{name}-%{version}.tgz
+# Source0-md5:	083bd0d48b75d2ab79f2636f5bb204fc
+URL:		https://github.com/copitux/python-github3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Requires:	python-modules
@@ -15,16 +15,20 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This is a Python library to take advantage of the new API. It is still
-in development and the interfaces may (read: will) change but is full
-featured enough now to be used for most tasks of the new API.
+Pygithub3 is a wrapper to the Github API v3, written in Python.
+
+It has been developed with extensibility in mind, because the API is
+in a beta state, trying to achieve a very loosly coupled software.
+
+It should be very easy to extend to support new requests and
+resources, because each of them are managed by itself.
 
 %prep
 %setup -qc
 mv *-%{module}-*/* .
 
 %build
-ver=$(awk -F"'" '/version/{print $2}' setup.py)
+ver=$(%{__python} -c "import  pygithub3; print pygithub3.__version__")
 test "$ver" = %{version}
 
 %{__python} setup.py build
@@ -43,9 +47,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README HACKING
-%dir %{py_sitescriptdir}/%{module}
-%{py_sitescriptdir}/%{module}/*.py[co]
+%doc AUTHORS.rst README.rst LICENSE requirements/base.txt docs
+%{py_sitescriptdir}/pygithub3
 %if "%{py_ver}" > "2.4"
-%{py_sitescriptdir}/python_%{module}-*.egg-info
+%{py_sitescriptdir}/pygithub3-%{version}-*.egg-info
 %endif
