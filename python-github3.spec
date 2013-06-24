@@ -1,12 +1,12 @@
-%define 	module	github3
+%define		module	github3
 Summary:	Github API v3 library for Python
 Name:		python-%{module}
-Version:	0.4
+Version:	0.5
 Release:	1
 License:	ISC
 Group:		Development/Languages/Python
 Source0:	https://github.com/copitux/python-github3/tarball/%{version}/%{name}-%{version}.tgz
-# Source0-md5:	083bd0d48b75d2ab79f2636f5bb204fc
+# Source0-md5:	2978ebf0ef709e436eb34f6c3a9e9a7c
 URL:		https://github.com/copitux/python-github3
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
