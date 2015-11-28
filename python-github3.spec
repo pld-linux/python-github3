@@ -32,14 +32,11 @@ mv *-%{module}-*/* .
 ver=$(%{__python} -c "import  pygithub3; print pygithub3.__version__")
 test "$ver" = %{version}
 
-%{__python} setup.py build
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install \
-	--skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 %py_postclean
 
