@@ -9,7 +9,7 @@ Source0:	https://github.com/copitux/python-github3/tarball/%{version}/%{name}-%{
 # Source0-md5:	2978ebf0ef709e436eb34f6c3a9e9a7c
 URL:		https://github.com/copitux/python-github3
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 Requires:	python-modules
 Requires:	python-requests
 BuildArch:	noarch
